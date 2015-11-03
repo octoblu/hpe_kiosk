@@ -1,0 +1,38 @@
+body {
+  background-color: #425563;
+}
+
+.rectangleMain {
+  margin: auto;
+  margin-top: 30px;
+  width: 80%;
+  padding: 10px;
+  height:90px;
+}
+
+@font-face {
+  font-family: 'hp-main';
+  font-style: normal;
+  src: url("fonts/MetricWeb-Medium.woff") format('woff');
+}
+
+
+.mainBox {
+
+}
+
+.displayText {
+  margin: auto;
+  font-family: 'hp-main';
+  color: white;
+  font-size: 60px;
+  height: 40px;
+  width: 80%;
+}
+
+.hp-logo {
+  margin-left: 5%;
+  position: absolute;
+  bottom: 1;
+  left: 1;
+}

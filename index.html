@@ -1,0 +1,38 @@
+
+<html>
+<head>
+
+
+  <link rel='stylesheet' href='https://gitcdn.xyz/repo/angular/bower-material/v0.11.0/angular-material.css'>
+  <link rel="stylesheet" href="./css/hp.css" >
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-aria.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-messages.min.js'></script>
+  <script src='https://gitcdn.xyz/repo/angular/bower-material/v0.11.0/angular-material.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-sanitize.min.js'></script>
+  <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js'></script>
+  <script src="./js/app.js" ></script>
+
+</head>
+<body ng-app="MyApp" ng-controller="AppCtrl" layout="column" >
+
+
+  <div class="mainBox">
+
+    <md-content flex layout-padding="" style="background-color: #425563;">
+
+      <div class="rectangleMain" style="border:13px solid #{{borderColor}};"></div>
+    </md-content>
+    <div class="displayText">
+      {{availText}}<sup>3</sup>
+    </div>
+
+    <img ng-click="available()" class="hp-logo" src="./img/hp_white.svg" />
+
+
+
+  </div>
+
+</body>

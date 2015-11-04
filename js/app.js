@@ -1,11 +1,11 @@
 
-var app = angular.module('MyApp');
+var app = angular.module('MyApp', ['AutoFontSize']);
 
 app.controller('AppCtrl', function($scope) {
-
   $scope.borderColor = "01a982";
   $scope.availText = "Available for Collaboration"
   $scope.names = "";
+
 
   $scope.payload = function(data){
     $scope.availText = data.payload.text;
@@ -19,7 +19,7 @@ app.controller('AppCtrl', function($scope) {
   var query = window.location.search.substring(1).split("&");
   for (var i = 0, max = query.length; i < max; i++)
   {
-    if (query[i] === "") 
+    if (query[i] === "")
     continue;
     var param = query[i].split("=");
     GET[decodeURIComponent(param[0])] = decodeURIComponent(param[1] || "");
@@ -42,7 +42,14 @@ app.controller('AppCtrl', function($scope) {
         "enum": ["01a982", "FF8D6D"]
       },
       "names": {
-        "type": "string"
+        "type": "array",
+        "maxItems": 3,
+        "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" }
+        }
+      }
       }
     }
   };

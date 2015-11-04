@@ -25,7 +25,8 @@ body {
   margin-top: 50px;
   font-family: 'hp-main';
   color: white;
-  font-size: 70px;
+  font-size: 100%;
+  line-height: 1%;
   height: 40px;
   width: 80%;
 }

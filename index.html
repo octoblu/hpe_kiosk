@@ -1,8 +1,6 @@
 
 <html>
 <head>
-
-
   <link rel='stylesheet' href='https://gitcdn.xyz/repo/angular/bower-material/v0.11.0/angular-material.css'>
   <link rel="stylesheet" href="./css/hp.css" >
   <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js'></script>
@@ -13,12 +11,13 @@
   <script src='https://gitcdn.xyz/repo/angular/bower-material/v0.11.0/angular-material.js'></script>
   <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-sanitize.min.js'></script>
   <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js'></script>
+  <script src="./js/auto-font-min.js"></script>
 
   <script src="http://cdn.octoblu.com/js/meshblu/latest/meshblu.bundle.js" type="text/javascript"></script>
   <script src="./js/app.js" ></script>
 
 </head>
-<body ng-app="MyApp" ng-controller="AppCtrl" layout="column" >
+<body ng-app="MyApp" ng-controller="AppCtrl" layout="column">
 
 
   <div class="mainBox">
@@ -31,15 +30,11 @@
       {{availText}}<sup>3</sup>
 
       <div class="displayNames">
-        {{names}}
+        <ul ng-repeat="name in names">{{name.name}}</ul>
       </div>
     </div>
 
-
-
     <img class="hp-logo" src="./img/hp_white.svg" />
-
-
 
   </div>
 

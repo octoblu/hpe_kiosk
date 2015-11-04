@@ -3,23 +3,9 @@ var app = angular.module('MyApp');
 
 app.controller('AppCtrl', function($scope) {
 
-  var state = 0;
   $scope.borderColor = "01a982";
   $scope.availText = "Available for Collaboration"
   $scope.names = "";
-
-  $scope.available = function(){
-    if(state == 1){
-      $scope.borderColor = "01a982";
-      $scope.availText = "Available for Collaboration"
-      state = 0;
-    }else if(state == 0){
-      $scope.borderColor = "FF8D6D";
-      $scope.availText = "Collaboration in Progress"
-      state = 1;
-    }
-
-  }
 
   $scope.payload = function(data){
     $scope.availText = data.payload.text;
@@ -33,7 +19,7 @@ app.controller('AppCtrl', function($scope) {
   var query = window.location.search.substring(1).split("&");
   for (var i = 0, max = query.length; i < max; i++)
   {
-    if (query[i] === "") // check for trailing & with no param
+    if (query[i] === "") 
     continue;
     var param = query[i].split("=");
     GET[decodeURIComponent(param[0])] = decodeURIComponent(param[1] || "");
@@ -74,9 +60,5 @@ app.controller('AppCtrl', function($scope) {
     });
 
   });
-
-
-
-
 
 });

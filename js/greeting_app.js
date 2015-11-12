@@ -4,6 +4,10 @@ var app = angular.module('MyApp', ['AutoFontSize']);
 app.controller('AppCtrl', function($scope) {
   $scope.names = "";
 
+  $scope.clearNames = function(){
+    $scope.names = [""];
+    $scope.$apply();
+  }
 
   $scope.payload = function(data){
 
@@ -51,6 +55,10 @@ app.controller('AppCtrl', function($scope) {
           "name": { "type": "string" }
         }
       }
+    },
+      "clear": {
+        "type": "boolean",
+        "default": false
       }
     }
   };
@@ -64,7 +72,12 @@ app.controller('AppCtrl', function($scope) {
     });
 
     conn.on('message', function(data){
-      $scope.payload(data);
+      if(data.payload.clear == false){
+        $scope.payload(data);
+      }else{
+        $scope.clearNames();
+      }
+
     });
 
   });

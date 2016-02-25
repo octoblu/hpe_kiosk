@@ -20,5 +20,6 @@ deploy:
   bucket: hpe-kiosk.octoblu.com
   endpoint: hpe-kiosk.octoblu.com.s3-website-us-west-2.amazonaws.com
   acl: public_read
+  region: us-west-2
   on:
     tags: true

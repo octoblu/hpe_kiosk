@@ -1,0 +1,24 @@
+language: node_js
+sudo: false
+node_js:
+- '5.1'
+after_success:
+- cp -r index.html greeting.html img js css build/
+- for file in `find build -type f`; do gzip --best $file && mv $file.gz $file; done
+after_deploy:
+- ./deploy/invalidate-cloudfront.sh $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY $TRAVIS_BRANCH
+deploy:
+  provider: s3
+  access_key_id: AKIAJH2D5IPIRHYJT5IA
+  secret_access_key:
+    secure: GCCRegK/Hpha/4/8sQbW9toZVwBVz1zR/KduLd8V9Ig5SWfs3FFyDlXP0Dn7OQMsQrsetGHyqcN8MMJa6RPiWTGB+mYyNUqx3CrwJ5PSYH8x5ugq7yY7Gnpidv85a3BfXspne6mpX5I8RnyeqPV5wnbpVhxEixzehDuWBK0uLSoO+SbEqzl2TQJAcVFQIlWo0brpuopQLjZDQVONUOAjBmHC8exBl3D+cuGE84yomiVgGX7b7/Dbx6NPVX2NXgaqgP3RZXHmhh5rpcB1kEtqF7PoFErfHwOeD/FU0XOosuAR5Ty6z86VJLRFBb8C4+YLOoFxmzwpu47fm3yImR3fZD7n8uZw5hiRzafKYpoOXmpvA6wrm8Q1CR+Xg7J8M4H//GICxUUR6sTLhyzF3eehqCcu95mbPR0ueIdQ+PUtBOcyTNeJxM1pi1TxADctI0lQTfgWSRx5EniXP7+NUvEvJGO7sSXVI/o/ZdlB6wfz66zX+gnRJcSiGm4Z1yvhljOHPlOfbDCxTBPHtEhZMstDT2/nsHDJ+3LYA/vbsoL7xWIA4SD/ciJkVe215hJ97s87j80PDpqdGWqUWQSDrjgXcbDjMg8nsRESJGLnOuZRIFaIh3V9lc2TNF1z+bqLoBC2/cxOExyNfZw/MRiTp7kYc3rkwGel8qf6fBzMgI8OxjY=
+  bucket: hpe-kiosk.octoblu.com
+  acl: public_read
+  on:
+    tags: true
+env:
+  global:
+    AWS_ACCESS_KEY_ID:
+      secure: T5INT0+4aV144ES5Rs6e0okRo20BsZxQMBkXzxuw4JrzHuugyKx+cdiRhTj7GO9IniG3zVoKzMPn8eMw2NI4dRRrxkhizEOd8L+l9cfDD+3eKJ8pO55T3xDcmsZXJ4K6mlXIiL0uyncS28MnSe4wkCLZ6vei1IIY+PFoJSZ2phbf0ea04jdZATOLOcdfH5eZEkXmVvJFRySoas9Da96oqhyDgbhvY3/XQVpIGh/fi0A0arvslz/uuK1N5saBkK5Ib0F9fBC5jhltXPzOfXCHOs8ZDZF/wuQW0P502x+rEH3gfq+osos1YiNMQqx1Xd9ww0/G8AH7dxw8U40fwmBgVG6yUyUG9GzrXJi5gD3uFI5BhSGmXhq2Mx+NXlRLcJQzL9HJIzE1po6WK8hEnACPZH4yI545PNX/N9YF2MeVHT/Z+SdVrTBS1pxXlCPw4/6iWloaDhKBeqk3dzs6OmoSQ2jgehroQAfdySMulKW+cXA+THRxpFlClTh7Qlr0MYgkyINALQig1LUr4t2/2JTt5KFH6xggnpjobQQ604nFbU+KfuGGo8kzepNAGc6UI5+Rh7KrPQWFO3grsUYjDuK6DflxykGRgpJO6GVWIbg+CKmLBy4WcDTkb3BUpI5ZcWOX0Pa1e7c2A41d9EzUOw/EKjFbaeYVS6HQxARQEA5fM4U=
+    AWS_SECRET_ACCESS_KEY:
+      secure: QUfcS9rMcJR8oX8t7PG5FpSu/PO0nWZRfMNhy3LtArc+mt6wS5N8qvMNQSZfdu+K8akdxdB8KEf2lKEC2Cvv1yjsdynIXVF9vWzhq3tbjaTV0rVrFjDHHeCuZ3E7Ky9BOtsuSUQiq121Wfi0//YX7dxF63FGbgJvj+1skZAT0tYp+aQ7i1+aDX8a3cEiqT7LF7tGza5YvKc7rGRtzC9KjeAOo1r1M/OFbZeIf04+R1WdbNndNPlQghN74092xZ4CnEL3fN5CZal2oL9IHTvhYpHYTD7WgS2tzSm2KIvTn3e6je7TutDkEu67g4Ttf+RgVLXBldD6vEqxZvt7tqPANEDd4CED9e7DulF/e5aRKzLBG4cK33VBhLripaY7si/UYpH9ddK5aK7pbvfidMIOltEty87GzrkdFlvJ/9eBIVm9XGnK2y6rlzsfsBgEoPnHM5Wk6odx1j6+1iRYs5EvGDMim9AJkHDnYGU9eRfuZtmcVGEDr3CMTHNXis8/f+FfHI5m40ch4FjlXRc5b4BeoPrc4bFDy3USEmSDykpfZr0GO1ip4D61Dw5sRlE3/ZdrgGTfutNgeWg36D0blYn2QA2Gca//7sjJXI7lbpUXuuehl1pD/kTEZgGDpCXw+4K1b5H4SVFoH6LfUBp0VJZglZex8uHmAU6IZqzZcqkdo+A=

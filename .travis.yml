@@ -13,6 +13,7 @@ deploy:
   secret_access_key:
     secure: GCCRegK/Hpha/4/8sQbW9toZVwBVz1zR/KduLd8V9Ig5SWfs3FFyDlXP0Dn7OQMsQrsetGHyqcN8MMJa6RPiWTGB+mYyNUqx3CrwJ5PSYH8x5ugq7yY7Gnpidv85a3BfXspne6mpX5I8RnyeqPV5wnbpVhxEixzehDuWBK0uLSoO+SbEqzl2TQJAcVFQIlWo0brpuopQLjZDQVONUOAjBmHC8exBl3D+cuGE84yomiVgGX7b7/Dbx6NPVX2NXgaqgP3RZXHmhh5rpcB1kEtqF7PoFErfHwOeD/FU0XOosuAR5Ty6z86VJLRFBb8C4+YLOoFxmzwpu47fm3yImR3fZD7n8uZw5hiRzafKYpoOXmpvA6wrm8Q1CR+Xg7J8M4H//GICxUUR6sTLhyzF3eehqCcu95mbPR0ueIdQ+PUtBOcyTNeJxM1pi1TxADctI0lQTfgWSRx5EniXP7+NUvEvJGO7sSXVI/o/ZdlB6wfz66zX+gnRJcSiGm4Z1yvhljOHPlOfbDCxTBPHtEhZMstDT2/nsHDJ+3LYA/vbsoL7xWIA4SD/ciJkVe215hJ97s87j80PDpqdGWqUWQSDrjgXcbDjMg8nsRESJGLnOuZRIFaIh3V9lc2TNF1z+bqLoBC2/cxOExyNfZw/MRiTp7kYc3rkwGel8qf6fBzMgI8OxjY=
   bucket: hpe-kiosk.octoblu.com
+  endpoint: hpe-kiosk.octoblu.com.s3-website-us-west-2.amazonaws.com
   acl: public_read
   on:
     tags: true

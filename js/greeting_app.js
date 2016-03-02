@@ -13,14 +13,20 @@ app.controller('AppCtrl', function($scope) {
 
   var names = [];
     data.payload.names.forEach(function(entry) {
-      var greet = "Good ";
-      date = new Date();
-      thehour = date.getUTCHours();
-      if (thehour > 18) { greet += "evening"; }
-      else if (thehour > 12) { greet += "afternoon"; }
-      else { greet += "morning"; }
-      var text = greet + " " + entry.name;
-      names.push(text);
+
+        var now = new Date();
+        var thehour = now.getHours(); // the local browser time
+        
+        var greet = "Good ";
+
+        if (thehour > 18) { greet += "evening"; }
+        else if (thehour > 12) { greet += "afternoon"; }
+        else { greet += "morning"; }
+
+        var text = greet + " " + entry.name;
+
+        names.push(text);
+
     });
 
     $scope.names = names;
@@ -55,6 +61,10 @@ app.controller('AppCtrl', function($scope) {
           "name": { "type": "string" }
         }
       }
+    },
+    "utcoffset":{
+      "type":"integer",
+      "default": -8  
     },
       "clear": {
         "type": "boolean",

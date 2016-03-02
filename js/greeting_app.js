@@ -62,10 +62,6 @@ app.controller('AppCtrl', function($scope) {
         }
       }
     },
-    "utcoffset":{
-      "type":"integer",
-      "default": -8  
-    },
       "clear": {
         "type": "boolean",
         "default": false
